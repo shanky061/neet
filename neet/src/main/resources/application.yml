@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: neet_service
+  profiles:
+    active: "mysql"
+  main:
+    banner-mode: "off"
+  output:
+    ansi.enabled: always
+  jpa:
+    open-in-view: "off"
+    show-sql: true
+    hibernate:
+      ddl-auto: "none"
+  datasource:
+    username: neet
+    password: nhk
+
+server:
+  http2:
+    enabled: true
+  jetty:
+    accesslog:
+      enabled: true
+      append: true
+      log-latency: true
+      log-server: true
+
+logging:
+  level:
+    root: WARN
+    com.nhk.neet: INFO
+
+info:
+  name: Nippon Hikikomori Kyokai
+  desc: A tiny url service
+
+# Application Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# MySQL
+---
+spring.profiles: mysql
+spring.datasource.url: jdbc:mysql://localhost:3306/neet
+
+# PostGreSQL
+---
+spring.profiles: postgres
+spring.datasource.url: jdbc:postgresql://localhost:5432/neet
