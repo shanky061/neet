@@ -10,15 +10,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.nhk</groupId>
     <artifactId>neet</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <url>https://incompletedetective.com/neet</url>
-
     <properties>
         <guava.version>27.0.1-jre</guava.version>
-        <spotbugs.version>3.1.11</spotbugs.version>
     </properties>
 
     <dependencies>
@@ -42,10 +38,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -76,6 +68,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!--actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,18 +97,4 @@
 
         </plugins>
     </build>
-
-    <!--<reporting>-->
-        <!--<plugins>-->
-            <!--&lt;!&ndash;spotBugs&ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>com.github.spotbugs</groupId>-->
-                <!--<artifactId>spotbugs-maven-plugin</artifactId>-->
-                <!--<version>${spotbugs.version}</version>-->
-                <!--<configuration>-->
-                    <!--<effort>max</effort>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</reporting>-->
 </project>

@@ -11,40 +11,43 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Service @Validated
+@Service
+@Validated
 public class TinyUrlService {
 
-    private HashingHelper hashingHelper;
-    private TinyUrlRepository tinyUrlRepository;
+  private HashingHelper hashingHelper;
+  private TinyUrlRepository tinyUrlRepository;
 
-    public TinyUrlService(HashingHelper hashingHelper, TinyUrlRepository tinyUrlRepository) {
-        Assert.notNull(hashingHelper, "Required dependency \"HashingHelper\" not found");
-        Assert.notNull(tinyUrlRepository, "Required dependency \"TinyUrlRepository\" not found");
+  public TinyUrlService(HashingHelper hashingHelper, TinyUrlRepository tinyUrlRepository) {
+    Assert.notNull(hashingHelper, "Required dependency \"HashingHelper\" not found");
+    Assert.notNull(tinyUrlRepository, "Required dependency \"TinyUrlRepository\" not found");
 
-        this.hashingHelper = hashingHelper;
-        this.tinyUrlRepository = tinyUrlRepository;
-    }
+    this.hashingHelper = hashingHelper;
+    this.tinyUrlRepository = tinyUrlRepository;
+  }
 
-    /**
-     * Persist and get hash of given Url resource
-     * @param urlResource url resource to persist
-     * @return tiny url resource
-     */
-    public URLResource createTinyUrl(@NotBlank final String urlResource) {
-        String hash = hashingHelper.getNextHash();
-        TinyUrl tinyUrl = new TinyUrl(hash, urlResource);
-        tinyUrlRepository.save(tinyUrl);
+  /**
+   * Persist and get hash of given Url resource
+   *
+   * @param urlResource url resource to persist
+   * @return tiny url resource
+   */
+  public URLResource createTinyUrl(@NotBlank final String urlResource) {
+    String hash = hashingHelper.getNextHash();
+    TinyUrl tinyUrl = new TinyUrl(hash, urlResource);
+    tinyUrlRepository.save(tinyUrl);
 
-        return new URLResource(tinyUrl.getHash());
-    }
+    return new URLResource(tinyUrl.getHash());
+  }
 
-    /**
-     * Convert resource hash to original Url
-     * @param hash resource hash
-     * @return Url string
-     */
-    public String getUrlFromHash(@NotNull final String hash) {
-        TinyUrl tinyUrl = tinyUrlRepository.findByHash(hash);
-        return tinyUrl.getResource();
-    }
+  /**
+   * Convert resource hash to original Url
+   *
+   * @param hash resource hash
+   * @return Url string
+   */
+  public String getUrlFromHash(@NotNull final String hash) {
+    TinyUrl tinyUrl = tinyUrlRepository.findByHash(hash);
+    return tinyUrl.getResource();
+  }
 }

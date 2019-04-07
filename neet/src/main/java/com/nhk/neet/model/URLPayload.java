@@ -1,13 +1,20 @@
 package com.nhk.neet.model;
 
 public class URLPayload {
-    private String payload;
+  private String payload;
 
-    public String getPayload() {
-        return payload;
-    }
+  public URLPayload() {
+  }
 
-    public void setPayload(String payload) {
-        this.payload = payload;
-    }
+  public URLPayload(String payload) {
+    this.payload = payload;
+  }
+
+  public String getPayload() {
+    return payload;
+  }
+
+  public void setPayload(String payload) {
+    this.payload = payload;
+  }
 }

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InfoController {
 
-    @GetMapping("/")
-    public String getInfo() {
-        return "Nippon Hikikomori Kyokai";
-    }
+  @GetMapping("/")
+  public String getInfo() {
+    return "Nippon Hikikomori Kyokai";
+  }
 }

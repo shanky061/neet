@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TinyUrlRepository extends JpaRepository<TinyUrl, Long> {
-    TinyUrl findByHash(String hash);
+  TinyUrl findByHash(String hash);
 }
