@@ -39,3 +39,13 @@ jobs:
 
       # run tests!
       - run: mvn surefire:test
+
+# workflows
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: dev
