@@ -11,10 +11,10 @@
     </parent>
 
     <artifactId>neet</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <guava.version>27.0.1-jre</guava.version>
+        <jib.version>1.0.2</jib.version>
     </properties>
 
     <dependencies>
@@ -77,8 +77,40 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>${jib.version}</version>
+                        <configuration>
+                            <to>
+                                <image>docker.io/shanky061/neet</image>
+                            </to>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>buildTar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -94,7 +126,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>

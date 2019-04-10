@@ -5,8 +5,6 @@ spring:
     active: "mysql"
   main:
     banner-mode: "off"
-  output:
-    ansi.enabled: always
   jpa:
     open-in-view: "off"
     show-sql: true
