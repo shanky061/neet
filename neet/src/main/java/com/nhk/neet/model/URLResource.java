@@ -10,8 +10,4 @@ public class URLResource {
   public String getUrlHash() {
     return urlHash;
   }
-
-  public void setUrlHash(String urlHash) {
-    this.urlHash = urlHash;
-  }
 }

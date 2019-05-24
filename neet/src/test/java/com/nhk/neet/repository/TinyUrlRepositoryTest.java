@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -38,6 +39,7 @@ public class TinyUrlRepositoryTest {
 
     TinyUrl tinyUrl = tinyUrlRepository.findByHash("xyz");
 
+    assertNotNull(tinyUrl.getId());
     assertThat(tinyUrl.getHash(), is(savedUrl.getHash()));
     assertThat(tinyUrl.getResource(), is(savedUrl.getResource()));
   }

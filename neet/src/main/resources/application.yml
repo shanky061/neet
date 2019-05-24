@@ -1,3 +1,5 @@
+# Multi-Profile Application configs
+
 spring:
   application:
     name: neet_service

@@ -36,23 +36,11 @@ public class TinyUrl extends AuditModel {
     return id;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
   public String getHash() {
     return hash;
   }
 
-  public void setHash(String hash) {
-    this.hash = hash;
-  }
-
   public String getResource() {
     return resource;
-  }
-
-  public void setResource(String resource) {
-    this.resource = resource;
   }
 }
